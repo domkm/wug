@@ -1,5 +1,8 @@
 (ns domkm.wug.markov
-  (:require [clojure.string :as str]))
+  (:refer-clojure :exclude [< > <= >= = not=])
+  (:require [clojure
+             [core :as clj]
+             [string :as str]]))
 
 (def n-gram-range (range 1 4))
 
@@ -29,4 +32,11 @@
 (defn word-probability [word]
   (->> (n-grams word)
        (map n-gram-probability)
-       (apply *)))
+       (reduce *)))
+
+(defmacro ^:private def-comparator-fn [sym]
+  `(defn ~sym [& args#]
+     (apply ~(symbol "clojure.core" (name sym))
+            (map word-probability args#))))
+
+`(do ~@(map def-comparator-fn '[< > <= >= = not=]))
