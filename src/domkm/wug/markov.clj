@@ -14,7 +14,7 @@
 (def n-gram-frequencies
   (let [words (->> (slurp "resources/words")
                    str/split-lines
-                   (filter #(= % (str/lower-case %)))
+                   (filter #(clj/= % (str/lower-case %)))
                    set)]
     (frequencies (mapcat n-grams words))))
 
@@ -34,9 +34,15 @@
        (map n-gram-probability)
        (reduce *)))
 
-(defmacro ^:private def-comparator-fn [sym]
+(defn ^:private def-comparator-fn [sym]
   `(defn ~sym [& args#]
      (apply ~(symbol "clojure.core" (name sym))
             (map word-probability args#))))
 
-`(do ~@(map def-comparator-fn '[< > <= >= = not=]))
+(defmacro ^:private def-comparator-fns []
+  `(do
+     ~@(map def-comparator-fn '[< > <= >= = not=])))
+
+(def-comparator-fns)
+
+
