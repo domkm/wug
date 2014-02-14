@@ -1,14 +1,17 @@
-# domkm.wug
+# wʌg
 
-A Clojure library designed to ... well, that part is up to you.
+Phonetic utilities for strings.
 
 ## Usage
 
-FIXME
+Don't. It's not yet ready.
+
+## Wug?
+
+It's named after the [Wug Test](http://en.wikipedia.org/wiki/Wug_test).
 
 ## License
 
-Copyright © 2014 FIXME
+Copyright © 2014 Dom Kiva-Meyer
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the [Eclipse Public License version 1.0](http://www.eclipse.org/legal/epl-v10.html).
