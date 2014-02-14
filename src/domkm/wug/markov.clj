@@ -1,8 +1,7 @@
 (ns domkm.wug.markov
   (:refer-clojure :exclude [< > <= >= = not=])
-  (:require [clojure
-             [core :as clj]
-             [string :as str]]))
+  (:require [clojure.core :as clj]
+            [clojure.string :as str]))
 
 (def n-gram-range (range 1 4))
 
@@ -44,5 +43,3 @@
      ~@(map def-comparator-fn '[< > <= >= = not=])))
 
 (def-comparator-fns)
-
-
