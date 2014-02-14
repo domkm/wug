@@ -3,7 +3,8 @@
   :url "https://github.com/DomKM/wug"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.5.1"]]
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.clojure/math.combinatorics "0.0.7"]]
   :jar-exclusions [#"\.cljx"]
   :global-vars {*warn-on-reflection* true}
   :source-paths ["target/generated/src" "src"] ; TODO: remove "src" and change extensions to cljx once LightTable supports cljx
