@@ -1,13 +1,14 @@
 (ns domkm.wug.markov
   (:refer-clojure :exclude [< > <= >= = not=])
   (:require [clojure.core :as clj]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [clojure.java.io :as io]))
 
 (def ^:private words
-  (->> (slurp "resources/words")
-       str/split-lines
-       (filter #(clj/= % (str/lower-case %)))
-       set))
+  (-> "words.txt"
+      io/resource
+      slurp
+      str/split-lines))
 
 (defn ^:private n-grams
   ([s] (mapcat #(n-grams % s) (range 1 (inc (count s)))))
