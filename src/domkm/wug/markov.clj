@@ -29,7 +29,7 @@
   (/ (n-gram-frequencies n-gram 0)
      (n-gram-sums (count n-gram))))
 
-(defn ^:private score [word]
+(defn score [word]
   (->> (n-grams word)
        ; TODO: What is the optimal length-based scaling for n-grams?
        ; This scales by twice the length of the n-gram.
